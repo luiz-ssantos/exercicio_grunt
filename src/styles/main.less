@@ -1,0 +1,85 @@
+/* Variáveis */
+@background-color: #f4f4f9;
+@text-color: #333;
+@header-bg: #4c6ef5;
+@header-text: #ffffff;
+@main-bg: #ffffff;
+@box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+@task-border: 1px solid #ddd;
+@completed-color: #5cb85c;
+@completed-bg: #e7f7e8;
+@completed-message-color: #337ab7;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: @background-color;
+  color: @text-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+header {
+  background-color: @header-bg;
+  color: @header-text;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+
+  h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+}
+
+main {
+  background-color: @main-bg;
+  border-radius: 8px;
+  box-shadow: @box-shadow;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+
+  h2 {
+    color: @header-bg;
+    margin-bottom: 10px;
+  }
+
+  ol {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin: 10px 0;
+      padding: 10px;
+      border: @task-border;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+
+      &.completed {
+        color: @completed-color;
+        text-decoration: line-through;
+        background-color: @completed-bg;
+      }
+
+      input[type="checkbox"] {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+#completedMessage {
+  display: none;
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: @completed-message-color;
+  text-align: center;
+}
