@@ -21,16 +21,30 @@ module.exports = function (grunt) {
         },
       },
     },
+    // Cópia do arquivo index.html para a pasta dist
+    copy: {
+      main: {
+        files: [
+          {
+            expand: true,
+            src: ["index.html"],
+            dest: "dist/",
+            flatten: true,
+          },
+        ],
+      },
+    },
   });
 
   // Carregar os plugins do Grunt
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-less");
   grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks("grunt-contrib-copy");
 
   // Registrar a tarefa padrão
-  grunt.registerTask("default", ["clean", "less", "uglify"]);
+  grunt.registerTask("default", ["clean", "less", "uglify", "copy"]);
 
   // Definindo a tarefa de build
-  grunt.registerTask("build", ["clean", "less", "uglify"]);
+  grunt.registerTask("build", ["clean", "less", "uglify", "copy"]);
 };
