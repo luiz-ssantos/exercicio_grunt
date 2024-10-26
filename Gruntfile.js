@@ -28,11 +28,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-less");
   grunt.loadNpmTasks("grunt-contrib-uglify");
 
-  // Registrar as tarefas padrão
+  // Registrar a tarefa padrão
   grunt.registerTask("default", ["clean", "less", "uglify"]);
 
   // Definindo a tarefa de build
-  grunt.registerTask("build", [
-    // lista de tarefas a serem executadas
-  ]);
+  grunt.registerTask("build", ["clean", "less", "uglify"]);
 };
