@@ -34,6 +34,31 @@ module.exports = function (grunt) {
         ],
       },
     },
+    // Substituição de caminhos CSS e JS com o grunt-replace
+    replace: {
+      paths: {
+        options: {
+          patterns: [
+            {
+              match: /dist\/styles\/main.css/g, // Caminho antigo do CSS no HTML
+              replacement: "styles/main.css", // Novo caminho do CSS
+            },
+            {
+              match: /dist\/scripts\/main.min.js/g, // Caminho antigo do JS no HTML
+              replacement: "scripts/main.min.js", // Novo caminho do JS
+            },
+          ],
+        },
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ["dist/index.html"], // Arquivo onde a substituição será feita
+            dest: "dist/", // Pasta de destino
+          },
+        ],
+      },
+    },
   });
 
   // Carregar os plugins do Grunt
@@ -41,10 +66,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-less");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks("grunt-replace");
 
   // Registrar a tarefa padrão
-  grunt.registerTask("default", ["clean", "less", "uglify", "copy"]);
+  grunt.registerTask("default", ["clean", "less", "uglify", "copy", "replace"]);
 
   // Definindo a tarefa de build
-  grunt.registerTask("build", ["clean", "less", "uglify", "copy"]);
+  grunt.registerTask("build", ["clean", "less", "uglify", "copy", "replace"]);
 };
