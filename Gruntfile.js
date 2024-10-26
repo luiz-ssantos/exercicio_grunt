@@ -30,4 +30,9 @@ module.exports = function (grunt) {
 
   // Registrar as tarefas padrão
   grunt.registerTask("default", ["clean", "less", "uglify"]);
+
+  // Definindo a tarefa de build
+  grunt.registerTask("build", [
+    // lista de tarefas a serem executadas
+  ]);
 };
